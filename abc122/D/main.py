@@ -1,9 +1,35 @@
 #!/usr/bin/env python3
 import sys
+import re
+from functools import lru_cache
+
 
 MOD = 1000000007  # type: int
 
+
 def solve(N: int):
+    memo = [{} for i in range(N + 1)]
+
+    # AGC, A?GC, AG?C, GAC, ACG
+    def ok(last4):
+        if re.search(r"AGC|A.GC|AG.C|GAC|ACG", last4):
+            return False
+        return True
+
+    def dfs(cur, last3):
+        if last3 in memo[cur]:
+            return memo[cur][last3]
+        if cur == N:
+            return 1
+        ret = 0
+        for c in "ACGT":
+            if ok(last3 + c):
+                ret += dfs(cur + 1, last3[1:] + c)
+                ret %= MOD
+        memo[cur][last3] = ret
+        return ret
+
+    print(dfs(0, "TTT"))
     return
 
 
@@ -13,9 +39,11 @@ def main():
         for line in sys.stdin:
             for word in line.split():
                 yield word
+
     tokens = iterate_tokens()
     N = int(next(tokens))  # type: int
     solve(N)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
