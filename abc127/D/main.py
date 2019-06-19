@@ -1,11 +1,48 @@
 #!/usr/bin/env python3
 import sys
-from bisect import bisect_left
+
+from itertools import chain
+
+
+class BinarySearcher(object):
+    def __init__(self, condition, initial_values):
+        self.condition = condition
+        self.initial_values = initial_values
+        # all True
+        if self.condition(initial_values[0]):
+            self.first_solution = 0
+        # all False
+        elif not self.condition(initial_values[1]):
+            self.first_solution = None
+        else:
+            self.first_solution = self.search_first_solution(
+                *self.initial_values)
+
+    def search_first_solution(self, lower, upper):
+        if upper - lower <= 1:
+            return condition(n)
+        n = (lower + upper) // 2
+        if self.condition(n):
+            if not self.condition(n - 1):
+                return n
+            return self.search_first_solution(lower, n)
+        else:
+            return self.search_first_solution(n, upper)
+
 
 def solve(N: int, M: int, A: "List[int]", B: "List[int]", C: "List[int]"):
     A = sorted(A)
-    for m in range(M):
-        
+    bc = sorted(zip(B, C), key=lambda x: x[1], reverse=True)
+    D = []
+    for b, c in bc:
+        D.extend([c] * b)
+        if len(D) >= N:
+            break
+    length = min(len(A), len(D))
+    r = BinarySearcher(lambda x: A[x] > D[x], (0, length - 1)).first_solution
+    if r is None:
+        r = length
+    print(sum(A[r:]) + sum(D[:r]))
     return
 
 
