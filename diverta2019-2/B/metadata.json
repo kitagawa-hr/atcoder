@@ -1,0 +1,13 @@
+{
+ "code_filename": "main.kt",
+ "lang": "kotlin",
+ "problem": {
+  "alphabet": "B",
+  "contest": {
+   "contest_id": "diverta2019-2"
+  },
+  "problem_id": "diverta2019_2_b"
+ },
+ "sample_in_pattern": "main.*.inp",
+ "sample_out_pattern": "main.*.oac"
+}
