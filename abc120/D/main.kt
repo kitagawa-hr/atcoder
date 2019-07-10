@@ -29,22 +29,23 @@ class UnionFind(n: Int) {
 
 fun solve(N: Int, M: Int, A: IntArray, B: IntArray) {
     val uf = UnionFind(N)
-    val deque = ArrayDeque<Int>()
-    deque.addFirst(N * (N - 1) / 2)
+    val dp = LongArray(M)
+    val n = N.toLong()
+    dp[M - 1] = (n * (n - 1) / 2).toLong()
     for (i in M - 2 downTo 0) {
         var node1 = A[i + 1] - 1
         var node2 = B[i + 1] - 1
         if (uf.isSame(node1, node2)){
-            deque.addFirst(deque.getFirst())
+            dp[i] = dp[i+1]
         }
         else{
-            var N1 = uf.getSize(node1)
-            var N2 = uf.getSize(node2)
-            deque.addFirst(deque.getFirst() - (N1 * N2))
+            var N1 = uf.getSize(node1).toLong()
+            var N2 = uf.getSize(node2).toLong()
+            dp[i] = dp[i+1] - N1 * N2
             uf.unite(node1, node2)
         }
     }
-    repeat(M) { pw.println(deque.removeFirst()) }
+    dp.forEach{ pw.println(it) }
     pw.flush()
     return
 }
