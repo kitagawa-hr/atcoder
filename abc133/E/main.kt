@@ -1,10 +1,28 @@
 import java.io.*
 import java.util.*
 
-var pw = PrintWriter(System.out)
-const val MOD = 1000000007
-fun solve(N: Long, K: Long, a: LongArray, b: LongArray) {
-    pw.flush()
+const val MOD = 1000000007L
+
+fun solve(N: Int, K: Int, a: IntArray, b: IntArray) {
+    val tree = Array<MutableList<Int>>(N) { mutableListOf() }
+    val stack = ArrayDeque<Int>()
+    for (i in 0 until (N - 1)) { tree[a[i] - 1].add(b[i] - 1) }
+    val dp = LongArray(N) { -1L }
+    dp[0] = K.toLong()
+    var ret = K.toLong()
+    stack.addLast(0)
+    while (stack.size > 0) {
+        val parent = stack.removeLast()
+        val nodes = tree[parent]
+        for (i in 0 until nodes.size){
+            var node = nodes[i]
+            dp[node] = ret - i -1
+        }
+        if (stack.size > 0) ret = stack.getLast().toLong()
+    }
+    // println(dp.contentToString())
+    var ans = dp.filter { it != -1L }.reduce { a, b -> a * b % MOD }
+    println(ans % MOD)
     return
 }
 
@@ -21,13 +39,13 @@ fun main(args: Array<String>) {
         }
     }
     val sc = Scanner(System.`in`)
-    val N = sc.next().toLong()
-    val K = sc.next().toLong()
-    val a = LongArray((N - 1).toInt())
-    val b = LongArray((N - 1).toInt())
-    for (i in 0 until (N - 1).toInt()) {
-        a[i] = sc.next().toLong()
-        b[i] = sc.next().toLong()
+    val N = sc.next().toInt()
+    val K = sc.next().toInt()
+    val a = IntArray((N - 1))
+    val b = IntArray((N - 1))
+    for (i in 0 until (N - 1)) {
+        a[i] = sc.next().toInt()
+        b[i] = sc.next().toInt()
     }
     solve(N, K, a, b)
 }
