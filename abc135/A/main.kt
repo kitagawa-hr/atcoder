@@ -3,12 +3,10 @@ import java.util.*
 
 var pw = PrintWriter(System.out)
 const val NO = "IMPOSSIBLE"
-fun solve(A: Long, B: Long){
-    if ((A + B) % 2L != 0L){println(NO)}
-    else println((A+B)/2L)
+fun solve(A: Long, B: Long) {
+    if ((A + B) % 2L != 0L) { println(NO) } else println((A + B) / 2L)
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -27,4 +25,3 @@ fun main(args: Array<String>) {
     val B = sc.next().toLong()
     solve(A, B)
 }
-

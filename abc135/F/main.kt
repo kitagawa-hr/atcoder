@@ -2,11 +2,10 @@ import java.io.*
 import java.util.*
 
 var pw = PrintWriter(System.out)
-fun solve(s: String, t: String){
+fun solve(s: String, t: String) {
     pw.flush()
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -25,4 +24,3 @@ fun main(args: Array<String>) {
     val t = sc.next()
     solve(s, t)
 }
-
