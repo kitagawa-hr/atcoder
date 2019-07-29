@@ -31,6 +31,7 @@ fun main(args: Array<String>) {
         }
     }
     val sc = Scanner(System.`in`)
+<<<<<<< HEAD
     val N = sc.next().toInt()
     val a = IntArray(N)
     for (i in 0 until N) {
@@ -38,3 +39,13 @@ fun main(args: Array<String>) {
     }
     solve(N, a)
 }
+=======
+    val N = sc.next().toLong()
+    val a = LongArray(N.toInt())
+    for (i in 0 until N.toInt()) {
+        a[i] = sc.next().toLong()
+    }
+    solve(N, a)
+}
+
+>>>>>>> 15108b522615e7a52123e53d5c4370bb546087e2
