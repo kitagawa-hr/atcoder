@@ -1,14 +1,14 @@
 import java.io.*
 import java.util.*
 
-var pw = PrintWriter(System.out)
-const val YES = "Yes"
-const val NO = "No"
-fun solve(N: Long, M: Long, L: LongArray, R: LongArray, D: LongArray){
-    pw.flush()
+const val YES = "YES"
+const val NO = "NO"
+fun solve(A: Long, B: Long, X: Long) {
+    if (A <= X && X <= A + B) {
+        println(YES)
+    } else println(NO)
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -23,16 +23,8 @@ fun main(args: Array<String>) {
         }
     }
     val sc = Scanner(System.`in`)
-    val N = sc.next().toLong()
-    val M = sc.next().toLong()
-    val L = LongArray(M.toInt())
-    val R = LongArray(M.toInt())
-    val D = LongArray(M.toInt())
-    for (i in 0 until M.toInt()) {
-        L[i] = sc.next().toLong()
-        R[i] = sc.next().toLong()
-        D[i] = sc.next().toLong()
-    }
-    solve(N, M, L, R, D)
+    val A = sc.next().toLong()
+    val B = sc.next().toLong()
+    val X = sc.next().toLong()
+    solve(A, B, X)
 }
-

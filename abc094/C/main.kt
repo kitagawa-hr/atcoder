@@ -1,14 +1,19 @@
 import java.io.*
 import java.util.*
 
-var pw = PrintWriter(System.out)
-const val YES = "Yes"
-const val NO = "No"
-fun solve(N: Long, M: Long, L: LongArray, R: LongArray, D: LongArray){
+val pw = PrintWriter(System.out)
+fun solve(N: Int, X: IntArray) {
+    val x = X.sorted()
+    val a = x[N / 2 - 1]
+    val b = x[N / 2]
+    repeat(N) {
+        if (X[it] <= a) {
+            pw.println(b)
+        } else pw.println(a)
+    }
     pw.flush()
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -23,16 +28,10 @@ fun main(args: Array<String>) {
         }
     }
     val sc = Scanner(System.`in`)
-    val N = sc.next().toLong()
-    val M = sc.next().toLong()
-    val L = LongArray(M.toInt())
-    val R = LongArray(M.toInt())
-    val D = LongArray(M.toInt())
-    for (i in 0 until M.toInt()) {
-        L[i] = sc.next().toLong()
-        R[i] = sc.next().toLong()
-        D[i] = sc.next().toLong()
+    val N = sc.next().toInt()
+    val X = IntArray(N)
+    for (i in 0 until N) {
+        X[i] = sc.next().toInt()
     }
-    solve(N, M, L, R, D)
+    solve(N, X)
 }
-

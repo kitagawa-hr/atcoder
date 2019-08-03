@@ -4,9 +4,9 @@
  "problem": {
   "alphabet": "D",
   "contest": {
-   "contest_id": "abc099"
+   "contest_id": "abc094"
   },
-  "problem_id": "abc099_d"
+  "problem_id": "arc095_b"
  },
  "sample_in_pattern": "main.*.inp",
  "sample_out_pattern": "main.*.oac"

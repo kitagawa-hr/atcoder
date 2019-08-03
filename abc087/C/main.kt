@@ -1,14 +1,9 @@
 import java.io.*
 import java.util.*
 
-fun solve(N: Int, A: Array<IntArray>){
-    var ans = 0
-    for (i in 0 until N){
-        val sum1 = A[0].filterIndexed{ index, value -> index <= i }.sum()
-        val sum2 = A[1].filterIndexed{ index, value -> index >= i }.sum()
-        ans = Math.max(ans, sum1 + sum2)
-    }
-    println(ans)
+var pw = PrintWriter(System.out)
+fun solve(N: Long, A: Array<LongArray>){
+    pw.flush()
     return
 }
 
@@ -26,11 +21,11 @@ fun main(args: Array<String>) {
         }
     }
     val sc = Scanner(System.`in`)
-    val N = sc.next().toInt()
-    val A = Array<IntArray>(2.toInt()){ IntArray(N) }
+    val N = sc.next().toLong()
+    val A = Array<LongArray>(2.toInt()){ LongArray(N.toInt()) }
     for (i in 0 until 2.toInt()) {
-        for (j in 0 until N) {
-            A[i][j] = sc.next().toInt()
+        for (j in 0 until N.toInt()) {
+            A[i][j] = sc.next().toLong()
         }
     }
     solve(N, A)

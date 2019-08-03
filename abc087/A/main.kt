@@ -1,10 +1,8 @@
 import java.io.*
 import java.util.*
 
-val pw = PrintWriter(System.out)
+var pw = PrintWriter(System.out)
 fun solve(X: Long, A: Long, B: Long){
-    val rest = X - A
-    println(rest - (rest/B)*B)
     pw.flush()
     return
 }
