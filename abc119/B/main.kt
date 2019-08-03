@@ -2,10 +2,9 @@ import java.io.BufferedInputStream
 import java.io.InputStream
 import java.util.StringTokenizer
 
-
-fun solve(N: Long, x: DoubleArray, u: Array<String>){
-    val unit = u.map{ if (it == "JPY") 1 else 380000 }
-    val ans = x.mapIndexed{ index, it -> it * unit[index] }.sum()
+fun solve(N: Long, x: DoubleArray, u: Array<String>) {
+    val unit = u.map { if (it == "JPY") 1 else 380000 }
+    val ans = x.mapIndexed { index, it -> it * unit[index] }.sum()
     println(ans)
     return
 }

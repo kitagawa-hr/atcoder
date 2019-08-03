@@ -6,12 +6,12 @@ import java.util.StringTokenizer
 val pw = PrintWriter(System.out)
 const val INF = 10000000000
 
-fun solve(A: Long, B: Long, Q: Long, s: LongArray, t: LongArray, x: LongArray){
-    repeat(Q.toInt()){
+fun solve(A: Long, B: Long, Q: Long, s: LongArray, t: LongArray, x: LongArray) {
+    repeat(Q.toInt()) {
         var sp = - s.binarySearch(x[it]) - 1
         var tp = - t.binarySearch(x[it]) - 1
-        var sdist = Math.min(x[it] - s.getOrElse(sp-1){ -INF }, s.getOrElse(sp){ INF } - x[it])
-        var tdist = Math.min(x[it] - t.getOrElse(tp-1){ -INF }, t.getOrElse(tp){ INF } - x[it])
+        var sdist = Math.min(x[it] - s.getOrElse(sp - 1) { -INF }, s.getOrElse(sp) { INF } - x[it])
+        var tdist = Math.min(x[it] - t.getOrElse(tp - 1) { -INF }, t.getOrElse(tp) { INF } - x[it])
         pw.println(Math.min(sdist, tdist) + sdist + tdist)
     }
     pw.flush()
