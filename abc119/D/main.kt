@@ -7,40 +7,12 @@ val pw = PrintWriter(System.out)
 const val INF = 10000000000000L
 
 fun solve(A: Long, B: Long, Q: Long, s: LongArray, t: LongArray, x: LongArray) {
-    // ll lr rl rr
-    fun leftDist(pos: Long, list: List<Long>): Long{
-        val ret = list.binarySearch(pos)
-        if ( ret > 0 ) return 0L
-        val insertionPos = -ret - 1
-        return when(insertionPos){
-            0 -> INF
-            else -> pos - list[insertionPos - 1]
-        }
-    }
-    fun rightDist(pos: Long, list: List<Long>): Long{
-        val ret = list.binarySearch(pos)
-        if ( ret > 0 ) return 0L
-        val insertionPos = -ret - 1
-        return when(insertionPos){
-            list.size -> INF
-            else -> list[insertionPos] - pos
-        }
-    }
-    val S = s.toList()
-    val T = t.toList()
     repeat(Q.toInt()) {
-        val lS = leftDist(x[it], S)
-        val rS = rightDist(x[it], S)
-        val lT = leftDist(x[it], T)
-        val rT = rightDist(x[it], T)
-        val ans = listOf(
-            Math.max(lS, lT),
-            Math.max(rS, rT),
-            2*lS + rT,
-            2*lT + rS,
-            lS + 2*rT,
-            lT + 2*rS).min()!!
-        pw.println(ans)
+        var sp = - s.binarySearch(x[it]) - 1
+        var tp = - t.binarySearch(x[it]) - 1
+        var sdist = Math.min(x[it] - s.getOrElse(sp - 1) { -INF }, s.getOrElse(sp) { INF } - x[it])
+        var tdist = Math.min(x[it] - t.getOrElse(tp - 1) { -INF }, t.getOrElse(tp) { INF } - x[it])
+        pw.println(Math.min(sdist, tdist) + sdist + tdist)
     }
     pw.flush()
     return
