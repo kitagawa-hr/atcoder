@@ -1,12 +1,16 @@
 import java.io.*
 import java.util.*
 
-var pw = PrintWriter(System.out)
-fun solve(N: Long, M: Long){
-    pw.flush()
+fun solve(N: Int, M: Int) {
+    // Mの約数のうち、M/Nよりも小さいものが候補となる
+    // M = d * m
+    var ret = M / N
+    while (M % ret != 0) {
+        ret--
+    }
+    println(ret)
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -21,8 +25,7 @@ fun main(args: Array<String>) {
         }
     }
     val sc = Scanner(System.`in`)
-    val N = sc.next().toLong()
-    val M = sc.next().toLong()
+    val N = sc.next().toInt()
+    val M = sc.next().toInt()
     solve(N, M)
 }
-

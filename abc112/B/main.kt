@@ -1,12 +1,11 @@
 import java.io.*
 import java.util.*
 
-fun solve(N: Long, T: Long, c: LongArray, t: LongArray){
-    val ans = (0 until N.toInt()).map{ c[it] to t[it] }.filter{ it.second <= T }.minBy{ it.first }?.first
-    println(ans?: "TLE")
+fun solve(N: Long, T: Long, c: LongArray, t: LongArray) {
+    val ans = (0 until N.toInt()).map { c[it] to t[it] }.filter { it.second <= T }.minBy { it.first }?.first
+    println(ans ?: "TLE")
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -31,4 +30,3 @@ fun main(args: Array<String>) {
     }
     solve(N, T, c, t)
 }
-

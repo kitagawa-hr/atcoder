@@ -1,14 +1,32 @@
 import java.io.*
 import java.util.*
 
-fun solve(N: Int, x: IntArray, y: IntArray, h: IntArray){
-    data class Pyramid(val x: Int, val y: Int, val h: Int)
-    val pyramid = (0 until N).map{ Pyramid(x[it], y[it], h[it]) }
-    pyramid.filter{ it.h == 100 }.getOrNull(0)?.let{ println("${it.x} ${it.y} ${it.h}"); return }
-    println("2 2 6")
+fun solve(N: Int, x: IntArray, y: IntArray, h: IntArray) {
+    // z = max(0, H - |x-cx| - |y-cy|)
+    if (100 in h) {
+        val idx = h.indexOf(100)!!
+        println("${x[idx]} ${y[idx]} 100")
+        return
+    }
+    for (cx in 0..100) {
+        for (cy in 0..100) {
+            val dists = (0 until N)
+                .filter{ h[it] != 0 }
+                .map { h[it] + Math.abs(x[it] - cx) + Math.abs(y[it] - cy) }
+                .distinct()
+            if (dists.size == 1) {
+                val H = dists[0]
+                if ((0 until N)
+                    .filter{ h[it] == 0 }
+                    .map{ h[it] + Math.abs(x[it] - cx) + Math.abs(y[it] - cy) }.all{ it>=H }){
+                    println("$cx $cy $H")
+                    return
+                }
+            }
+        }
+    }
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -34,4 +52,3 @@ fun main(args: Array<String>) {
     }
     solve(N, x, y, h)
 }
-

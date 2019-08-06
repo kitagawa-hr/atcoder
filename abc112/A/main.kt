@@ -1,7 +1,6 @@
 import java.io.*
 import java.util.*
 
-
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
         return Array<String>(size, init)
@@ -16,10 +15,9 @@ fun main(args: Array<String>) {
     }
     val sc = Scanner(System.`in`)
     val N = sc.next().toInt()
-    when(N){
+    when (N) {
         1 -> { println("Hello World") }
         2 -> { println(sc.next().toInt() + sc.next().toInt()) }
-        else -> {println("Error")}
+        else -> { println("Error") }
     }
 }
-
