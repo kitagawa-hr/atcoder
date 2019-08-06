@@ -1,11 +1,10 @@
 import java.io.*
 import java.util.*
 
-fun solve(N: Long, K: Long){
-    println(if(N%K ==0L) 0 else 1)
+fun solve(N: Long, K: Long) {
+    println(if (N % K == 0L) 0 else 1)
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -24,4 +23,3 @@ fun main(args: Array<String>) {
     val K = sc.next().toLong()
     solve(N, K)
 }
-

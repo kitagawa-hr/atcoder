@@ -1,26 +1,23 @@
 import java.io.*
 import java.util.*
 
-fun solve(N: Int){
-    if (N == 0){
-        println(0)
-        return
-    }
+fun solve(N: Int) {
+    if (N == 0) { println(0); return }
+    var n = N.toLong()
     val ans = ArrayDeque<Int>()
-    var n = N
-    var ret = -2
-    while(n != 0){
-        if (n % ret != 0 ){
+    var ret = -2L
+    for (i in 0 until 32) {
+        if (n % ret == 0L) {
+            ans.addFirst(0)
+        } else {
             ans.addFirst(1)
-            n -= n % ret
-        }else ans.addFirst(0)
+            n -= -ret / 2
+        }
         ret *= -2
     }
-    ans.forEach{ print(it) }; println()
+    println(ans.dropWhile { it == 0 }.joinToString(separator = ""))
     return
 }
-
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {

@@ -4,19 +4,18 @@ import java.util.*
 var pw = PrintWriter(System.out)
 const val YES = "Yes"
 const val NO = "No"
-fun solve(N: Int){
-    for (i in 0..N/4){
-        for (j in 0..N/7){
-            if (4*i + 7*j == N){
+fun solve(N: Int) {
+    for (i in 0..N / 4) {
+        for (j in 0..N / 7) {
+            if (4 * i + 7 * j == N) {
                 println(YES)
                 return
             }
         }
     }
-                println(NO)
+    println(NO)
     return
 }
-
 
 fun main(args: Array<String>) {
     fun StringArray(size: Int, init: (Int) -> String = { "\u0000" }): Array<String> {
@@ -34,4 +33,3 @@ fun main(args: Array<String>) {
     val N = sc.next().toInt()
     solve(N)
 }
-
