@@ -1,0 +1,13 @@
+{
+ "code_filename": "main.kt",
+ "lang": "kotlin",
+ "problem": {
+  "alphabet": "A",
+  "contest": {
+   "contest_id": "abc069"
+  },
+  "problem_id": "abc069_a"
+ },
+ "sample_in_pattern": "main.*.inp",
+ "sample_out_pattern": "main.*.oac"
+}
